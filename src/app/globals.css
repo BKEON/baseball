@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --hw-orange: #FF6B00;
+  --hw-dark: #0A0E1A;
+  --hw-navy: #0D1B3E;
+  --hw-gold: #F5C842;
+  --hw-red: #D72638;
+  --hw-green: #1A6B3A;
+  --hw-gray: #1E2535;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--hw-dark);
+  overflow-x: hidden;
+}
+
+/* Scoreboard LED effect */
+.led-text {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
+}
+
+/* Stadium texture overlay */
+.stadium-bg {
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(255, 107, 0, 0.15) 0%, transparent 60%),
+    linear-gradient(180deg, #0A0E1A 0%, #0D1B3E 50%, #0A0E1A 100%);
+}
+
+/* Diamond pattern */
+.diamond-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 107, 0, 0.03) 10px,
+    rgba(255, 107, 0, 0.03) 20px
+  );
+}
+
+/* Scanline overlay for CRT effect */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 2px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  pointer-events: none;
+}
+
+/* Orange glow button */
+.btn-primary {
+  @apply relative overflow-hidden bg-hw-orange text-white font-bold;
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 40px rgba(255, 107, 0, 0.6), 0 0 80px rgba(255, 107, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Score board text */
+.scoreboard {
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+}
+
+/* Progress bar glow */
+.progress-glow {
+  box-shadow: 0 0 10px var(--hw-orange), 0 0 20px rgba(255, 107, 0, 0.5);
+}
+
+/* Card hover effect */
+.option-card {
+  @apply relative cursor-pointer border border-white/10 rounded-xl transition-all duration-200;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.option-card:hover {
+  background: rgba(255, 107, 0, 0.1);
+  border-color: rgba(255, 107, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.option-card.selected {
+  background: rgba(255, 107, 0, 0.15);
+  border-color: var(--hw-orange);
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.2);
+}
+
+/* Marquee container */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Result card shine */
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(200%) rotate(45deg); }
+}
+
+.shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  animation: shine 3s infinite;
+}
+
+/* Mobile safe area */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--hw-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--hw-orange);
+  border-radius: 2px;
+}
