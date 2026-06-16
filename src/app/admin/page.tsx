@@ -134,8 +134,6 @@ export default function AdminPage() {
   const funnelData = kpi
     ? [
         { name: "방문", value: kpi.total_visits, fill: "#FF6B00" },
-        { name: "테스트 시작", value: kpi.test_starts, fill: "#F5C842" },
-        { name: "테스트 완료", value: kpi.test_completes, fill: "#1A6B3A" },
         { name: "카드뉴스", value: kpi.cardnews_views, fill: "#4A90D9" },
         { name: "만족도", value: kpi.feedback_count, fill: "#A855F7" },
       ]
@@ -201,10 +199,7 @@ export default function AdminPage() {
           {[
             { label: "총 방문자", value: kpi.total_visits.toLocaleString(), unit: "명", color: "#FF6B00" },
             { label: "순 방문자", value: kpi.unique_visitors.toLocaleString(), unit: "명", color: "#F5C842" },
-            { label: "테스트 완료율", value: kpi.test_starts ? Math.round((kpi.test_completes / kpi.test_starts) * 100) : 0, unit: "%", color: "#1A6B3A" },
-            { label: "카드뉴스 진입률", value: kpi.test_completes ? Math.round((kpi.cardnews_views / kpi.test_completes) * 100) : 0, unit: "%", color: "#4A90D9" },
-            { label: "테스트 시작", value: kpi.test_starts.toLocaleString(), unit: "건", color: "#A855F7" },
-            { label: "테스트 완료", value: kpi.test_completes.toLocaleString(), unit: "건", color: "#FF6B00" },
+            { label: "카드뉴스 진입률", value: kpi.total_visits ? Math.round((kpi.cardnews_views / kpi.total_visits) * 100) : 0, unit: "%", color: "#4A90D9" },
             { label: "카드뉴스 조회", value: kpi.cardnews_views.toLocaleString(), unit: "건", color: "#F5C842" },
             { label: "만족도", value: kpi.avg_satisfaction, unit: "%", color: "#1A6B3A" },
           ].map((item, i) => (
