@@ -111,8 +111,11 @@ export async function trackFeedback(score: "good" | "neutral" | "bad") {
 }
 
 export async function getVisitorCount(): Promise<number> {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
   const { count } = await supabase
     .from("visits")
-    .select("*", { count: "exact", head: true });
+    .select("*", { count: "exact", head: true })
+    .gte("visit_time", today.toISOString());
   return count || 0;
 }
