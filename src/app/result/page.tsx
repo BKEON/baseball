@@ -14,7 +14,6 @@ const displayNames: Record<string, string> = {
   직관몰입형: "직관몰입형",
 };
 
-// 유형별 좌석 상세 정보
 const seatInfo: Record<string, {
   zone: string;
   color: string;
@@ -34,28 +33,28 @@ const seatInfo: Record<string, {
     color: "#16a34a",
     bgColor: "rgba(22,163,74,0.12)",
     where: "좌측 외야 · 500구역",
-    tip: "돗자리·돗자리·바베큐존 인접! 여유로운 피크닉 관람 가능 🌿",
+    tip: "돗자리·바베큐존 인접! 여유로운 피크닉 관람이 가능합니다 🌿",
   },
   table: {
     zone: "중앙 탁자석 / 내야 탁자석(4층)",
     color: "#ea7c1a",
     bgColor: "rgba(234,124,26,0.12)",
     where: "홈플레이트 정면 · 100A~100C / 4층",
-    tip: "테이블에 음식 놓고 편하게! 먹방하기 최고의 자리 🍗",
+    tip: "테이블에 음식 놓고 편하게! 먹방하기 최고의 자리입니다 🍗",
   },
   aisle: {
     zone: "외야지정석",
     color: "#7c3aed",
     bgColor: "rgba(124,58,237,0.12)",
     where: "우측 외야 · 501~508구역",
-    tip: "통로와 출구 접근이 쉬워 언제든 자유롭게 이동 가능 🚪",
+    tip: "통로와 출구 접근이 쉬워 언제든 자유롭게 이동할 수 있습니다 🚪",
   },
   center: {
     zone: "내야지정석A",
     color: "#F5C842",
     bgColor: "rgba(245,200,66,0.12)",
     where: "1루 내야 · 101~112구역",
-    tip: "경기 전체를 한눈에! 선수들의 플레이를 가까이서 🎯",
+    tip: "경기 전체를 한눈에! 선수들의 플레이를 가까이서 볼 수 있습니다 🎯",
   },
 };
 
@@ -84,114 +83,194 @@ export default function ResultPage() {
     <main className="min-h-screen bg-hw-dark flex flex-col overflow-hidden">
       <div className={`absolute inset-0 bg-gradient-to-b ${result.bgGradient} opacity-60`} />
       <div className="absolute inset-0 diamond-pattern" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full blur-3xl opacity-25"
-        style={{ background: result.color }} />
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full blur-3xl opacity-20"
+        style={{ background: result.color }}
+      />
 
       <div className="relative z-10 flex flex-col min-h-screen">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}
-          className="flex-1 flex flex-col items-center px-5 pt-12 pb-8 text-center">
+        <div className="flex-1 flex flex-col items-center px-5 pt-10 pb-10 text-center">
 
           {/* 유형 라벨 */}
-          <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-xs font-mono tracking-[0.4em] text-white/40 uppercase mb-4">
+          <motion.p
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xs font-mono tracking-[0.4em] text-white/40 uppercase mb-4"
+          >
             당신의 직관 유형
-          </motion.div>
+          </motion.p>
 
           {/* 이모지 */}
-          <motion.div initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }}
+          <motion.div
+            initial={{ scale: 0, rotate: -20 }}
+            animate={{ scale: 1, rotate: 0 }}
             transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-            className="text-7xl mb-5 animate-float">{result.emoji}
+            className="text-6xl mb-4 animate-float"
+          >
+            {result.emoji}
           </motion.div>
 
           {/* 유형명 */}
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-            className="font-display text-5xl mb-4"
-            style={{ color: result.color, textShadow: `0 0 24px ${result.color}` }}>
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="font-display text-5xl mb-4 break-keep"
+            style={{ color: result.color, textShadow: `0 0 24px ${result.color}` }}
+          >
             {displayName}
           </motion.h1>
 
           {/* 설명 */}
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
-            className="text-white/70 text-sm leading-relaxed max-w-sm mb-5">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="text-white/70 text-sm leading-relaxed max-w-xs mb-5 break-keep word-break-keep-all"
+          >
             {result.description}
           </motion.p>
 
           {/* 해시태그 */}
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}
-            className="flex flex-wrap gap-2 justify-center mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9 }}
+            className="flex flex-wrap gap-2 justify-center mb-7"
+          >
             {result.traits.map((trait, i) => (
-              <span key={i} className="text-xs px-3 py-1 rounded-full border"
-                style={{ borderColor: `${result.color}50`, color: result.color, background: `${result.color}15` }}>
+              <span
+                key={i}
+                className="text-xs px-3 py-1 rounded-full border"
+                style={{
+                  borderColor: `${result.color}50`,
+                  color: result.color,
+                  background: `${result.color}15`,
+                }}
+              >
                 #{trait}
               </span>
             ))}
           </motion.div>
 
           {/* 추천 좌석 카드 */}
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0 }}
-            className="w-full max-w-sm mb-8">
-
-            <div className="text-xs font-mono text-white/40 uppercase tracking-widest mb-3 text-left flex items-center gap-2">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0 }}
+            className="w-full max-w-xs mb-7"
+          >
+            <p className="text-xs font-mono text-white/40 uppercase tracking-widest mb-3 text-left flex items-center gap-2">
               <span style={{ color: result.color }}>●</span> 추천 좌석
-            </div>
+            </p>
 
-            {/* 메인 좌석 카드 */}
-            <div className="rounded-2xl border p-5 text-left"
-              style={{ background: seat.bgColor, borderColor: `${seat.color}40` }}>
-
-              {/* 좌석 이름 */}
+            {/* 좌석 카드 */}
+            <div
+              className="rounded-2xl border p-5 text-left mb-3"
+              style={{ background: seat.bgColor, borderColor: `${seat.color}40` }}
+            >
+              {/* 좌석명 + 위치 */}
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: `${seat.color}25`, border: `1.5px solid ${seat.color}60` }}>
-                  <span className="text-xl">{result.emoji}</span>
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl"
+                  style={{ background: `${seat.color}25`, border: `1.5px solid ${seat.color}60` }}
+                >
+                  {result.emoji}
                 </div>
-                <div>
-                  <div className="font-bold text-white text-base leading-tight">{seat.zone}</div>
-                  <div className="text-xs mt-0.5" style={{ color: seat.color }}>{seat.where}</div>
+                <div className="min-w-0">
+                  <p className="font-bold text-white text-sm leading-snug break-keep">
+                    {seat.zone}
+                  </p>
+                  <p className="text-xs mt-0.5 break-keep" style={{ color: seat.color }}>
+                    {seat.where}
+                  </p>
                 </div>
               </div>
 
               {/* 구분선 */}
-              <div className="h-px mb-4" style={{ background: `${seat.color}25` }}/>
+              <div className="h-px mb-4" style={{ background: `${seat.color}25` }} />
 
               {/* 팁 */}
               <div className="flex items-start gap-2">
-                <span className="text-sm mt-0.5">💡</span>
-                <p className="text-white/65 text-sm leading-relaxed">{seat.tip}</p>
+                <span className="text-sm flex-shrink-0 mt-0.5">💡</span>
+                <p className="text-white/65 text-sm leading-relaxed break-keep">
+                  {seat.tip}
+                </p>
               </div>
             </div>
 
-            {/* 한화 공식 예매 안내 */}
-            <div className="mt-3 rounded-xl bg-white/5 border border-white/10 px-4 py-3 flex items-center gap-3">
-              <span className="text-lg">🎟️</span>
-              <div>
-                <div className="text-xs font-bold text-white/80">티켓 예매</div>
-                <div className="text-xs text-white/40 mt-0.5">한화이글스 공식 홈페이지 · 티켓링크</div>
+            {/* 티켓 예매 */}
+            <div className="rounded-2xl bg-white/5 border border-white/10 px-4 py-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-base">🎟️</span>
+                <p className="text-xs font-bold text-white/80">티켓 예매</p>
+              </div>
+              <div className="flex flex-col gap-2">
+                <a
+                  href="https://www.hanwhaeagles.co.kr/ticketInfo.do"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-4 py-3 rounded-xl transition-all active:scale-95"
+                  style={{ background: `${result.color}20`, border: `1px solid ${result.color}40` }}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm">🦅</span>
+                    <span className="text-sm font-medium text-white">한화이글스 공식 홈페이지</span>
+                  </div>
+                  <span className="text-white/40 text-xs">→</span>
+                </a>
+                <a
+                  href="https://www.ticketlink.co.kr/sports/baseball/10"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 border border-white/10 transition-all active:scale-95"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm">🎫</span>
+                    <span className="text-sm font-medium text-white">티켓링크</span>
+                  </div>
+                  <span className="text-white/40 text-xs">→</span>
+                </a>
               </div>
             </div>
           </motion.div>
 
           {/* 구분선 */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
-            className="flex items-center gap-3 text-white/20 text-xs mb-6 w-full max-w-sm">
-            <div className="flex-1 h-px bg-white/10" /><span>⚾</span><div className="flex-1 h-px bg-white/10" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="flex items-center gap-3 text-white/20 text-xs mb-6 w-full max-w-xs"
+          >
+            <div className="flex-1 h-px bg-white/10" />
+            <span>⚾</span>
+            <div className="flex-1 h-px bg-white/10" />
           </motion.div>
 
           {/* 하단 버튼 */}
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.3 }}
-            className="w-full max-w-xs space-y-3">
-            <div className="text-white/40 text-xs text-center mb-2">데이터로 보는 한화생명 볼파크</div>
-            <button onClick={() => router.push("/cardnews")}
-              className="btn-primary w-full py-4 rounded-2xl text-base font-display tracking-widest">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.3 }}
+            className="w-full max-w-xs space-y-3"
+          >
+            <p className="text-white/40 text-xs text-center mb-2">데이터로 보는 한화생명 볼파크</p>
+            <button
+              onClick={() => router.push("/cardnews")}
+              className="btn-primary w-full py-4 rounded-2xl text-base font-display tracking-widest"
+            >
               📊 카드뉴스 보기
             </button>
-            <button onClick={() => router.push("/")}
-              className="w-full py-3 rounded-2xl border border-white/10 text-white/40 text-sm hover:text-white/70 transition-all">
+            <button
+              onClick={() => router.push("/")}
+              className="w-full py-3 rounded-2xl border border-white/10 text-white/40 text-sm hover:text-white/70 transition-all"
+            >
               테스트 다시하기
             </button>
           </motion.div>
 
-        </motion.div>
+        </div>
       </div>
     </main>
   );
