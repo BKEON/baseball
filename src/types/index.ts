@@ -14,6 +14,7 @@ export interface TestAnswers {
   q3?: string;
   q4?: string;
   q5?: string;
+  q6?: string;
 }
 
 export type ResultType =
@@ -31,6 +32,9 @@ export interface ResultInfo {
   color: string;
   bgGradient: string;
   traits: string[];
+  seatZone: "cheering" | "center" | "lawn" | "table" | "aisle";
+  seatDetail: string;
+  seatZoneLabel: string;
 }
 
 export interface CardNewsView {
@@ -44,11 +48,4 @@ export interface FeedbackData {
   session_id: string;
   score: "good" | "neutral" | "bad";
   submitted_at: string;
-}
-
-export interface AnalyticsEvent {
-  session_id: string;
-  event_type: string;
-  event_data?: Record<string, unknown>;
-  occurred_at: string;
 }

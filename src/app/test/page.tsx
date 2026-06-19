@@ -11,57 +11,67 @@ const QUESTIONS = [
   {
     id: "q1",
     number: "01",
-    text: "야구장에서 가장 중요하게\n생각하는 것은?",
+    text: "친구가 \"오늘 야구장 갈래?\"라고\n물었을 때 나의 첫 반응은?",
     options: [
-      { value: "응원분위기", label: "🔥 응원 분위기" },
-      { value: "경기몰입감", label: "🎯 경기 몰입감" },
-      { value: "편안함", label: "😌 편안함" },
-      { value: "먹거리", label: "🍺 먹거리" },
-      { value: "사진", label: "📸 사진 / 인증샷" },
+      { value: "열정응원", label: "🔥 대박! 나 응원가 다 외워 갈래!" },
+      { value: "먹방", label: "🍗 거기 요즘 맛있는 거 뭐 팔아? 요아정?" },
+      { value: "가족피크닉", label: "☀️ 날씨 좋은데 밖에서 돗자리 펴고 놀면 좋겠다~" },
+      { value: "낄끼빠빠", label: "😏 재밌겠다! 근데 지루하면 중간에 나와도 되지?" },
     ],
   },
   {
     id: "q2",
     number: "02",
-    text: "응원 소음은\n어느 정도가 좋은가요?",
+    text: "야구장에 도착했을 때\n가장 설레는 순간은?",
     options: [
-      { value: "클수록좋다", label: "📢 클수록 좋다!" },
-      { value: "적당히좋다", label: "🔉 적당히 좋다" },
-      { value: "조용한것이좋다", label: "🤫 조용한 게 좋다" },
+      { value: "앰프응원", label: "🔊 쿵광거리는 앰프 소리와 응원가 소리" },
+      { value: "매점대기", label: "🌭 맛있는 냄새 가득한 매점 앞 대기" },
+      { value: "잔디하늘", label: "🌿 푸른 잔디밭과 탁 트인 하늘을 바라볼 때" },
+      { value: "조명설렘", label: "💡 경기장 조명이 켜지며 느껴지는 설렘" },
     ],
   },
   {
     id: "q3",
     number: "03",
-    text: "주로 누구와\n야구장을 방문하나요?",
+    text: "경기가 시작됐다!\n나의 야구장 관람 자세는?",
     options: [
-      { value: "혼자", label: "🙋 혼자" },
-      { value: "친구", label: "👥 친구와 함께" },
-      { value: "연인", label: "💑 연인과 함께" },
-      { value: "가족", label: "👨‍👩‍👧‍👦 가족과 함께" },
+      { value: "서서응원", label: "🎤 9이닝 내내 서서 배트 치며 노래 부르기" },
+      { value: "먹방흡입", label: "🍺 한 손엔 떡볶이, 한 손엔 맥주 끊임없이 흡입하기" },
+      { value: "도란도란", label: "📸 편하게 기대앉아 도란도란 인증샷 찍기" },
+      { value: "자유왔다", label: "📱 경기 보다가 폰 보다가 자유롭게 왔다 갔다" },
     ],
   },
   {
     id: "q4",
     number: "04",
-    text: "경기 중 가장\n기대되는 순간은?",
+    text: "우리 팀이 큰 점수 차로\n지고 있다. 이때 나는?",
     options: [
-      { value: "홈런", label: "💥 홈런 장면" },
-      { value: "응원가", label: "🎵 응원가 떼창" },
-      { value: "투수전", label: "⚔️ 숨막히는 투수전" },
-      { value: "먹거리", label: "🌭 야구장 먹거리" },
-      { value: "인증샷", label: "📷 완벽한 인증샷" },
+      { value: "역전응원", label: "📣 \"역전할 수 있어!\" 목이 터져라 응원한다" },
+      { value: "먹는게우선", label: "🌶️ 지는 건 지는 거고 매운 거 먹으러 가자" },
+      { value: "셀카남는건", label: "🤳 \"남는 건 사진뿐이야\" 다 같이 셀카 찍기" },
+      { value: "지금나가자", label: "🏃 \"차 막히기 전에 지금 나가자!\" 짐을 싼다" },
     ],
   },
   {
     id: "q5",
     number: "05",
-    text: "선호하는\n관람 스타일은?",
+    text: "야구장에서 내가 생각하는\n최고의 명당 기준은?",
     options: [
-      { value: "열정적으로응원", label: "🔥 열정적으로 응원" },
-      { value: "경기에집중", label: "👁️ 경기에 집중" },
-      { value: "편안하게관람", label: "🛋️ 편안하게 관람" },
-      { value: "감성적으로즐김", label: "✨ 감성적으로 즐김" },
+      { value: "치어리더명당", label: "💃 치어리더와 선수들이 가장 잘 보이는 곳" },
+      { value: "테이블명당", label: "🍽️ 음식을 안정적으로 놓을 수 있는 테이블석" },
+      { value: "돗자리명당", label: "🛋️ 편하게 다리 뻗거나 돗자리 펼 수 있는 넓은 곳" },
+      { value: "통로명당", label: "🚪 화장실·출구로 탈출하기 쉬운 통로쪽" },
+    ],
+  },
+  {
+    id: "q6",
+    number: "06",
+    text: "야구 경기는 보통 3시간 이상!\n나의 적당한 관람 시간은?",
+    options: [
+      { value: "연장전가능", label: "⚾ 연장전까지 가도 좋아! 밤새 응원 가능" },
+      { value: "다먹을때까지", label: "🍖 맛있는 거 다 먹을 때까지가 내 관람 시간" },
+      { value: "노을여유", label: "🌅 낮에 들어가서 노을 지는 것까지 보는 여유" },
+      { value: "5이닝OUT", label: "⏱️ 5이닝 집중해서 보고, 루즈해지면 OUT!" },
     ],
   },
 ];
@@ -84,9 +94,7 @@ export default function TestPage() {
   const question = QUESTIONS[currentQ];
   const progress = ((currentQ + 1) / QUESTIONS.length) * 100;
 
-  const handleSelect = (value: string) => {
-    setSelected(value);
-  };
+  const handleSelect = (value: string) => setSelected(value);
 
   const handleNext = async () => {
     if (!selected) return;
@@ -117,7 +125,6 @@ export default function TestPage() {
 
   return (
     <main className="min-h-screen bg-hw-dark diamond-pattern flex flex-col">
-      {/* Top bar */}
       <div className="flex items-center justify-between px-5 pt-5 pb-3">
         <button
           onClick={handlePrev}
@@ -133,7 +140,6 @@ export default function TestPage() {
         <div className="w-10" />
       </div>
 
-      {/* Progress bar */}
       <div className="px-5 mb-8">
         <div className="h-1 bg-white/10 rounded-full overflow-hidden">
           <motion.div
@@ -145,7 +151,6 @@ export default function TestPage() {
         </div>
       </div>
 
-      {/* Question area */}
       <div className="flex-1 px-5 flex flex-col">
         <AnimatePresence mode="wait">
           <motion.div
@@ -156,17 +161,13 @@ export default function TestPage() {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="flex-1 flex flex-col"
           >
-            {/* Question number */}
             <div className="font-display text-7xl text-white/5 leading-none mb-2 select-none">
               {question.number}
             </div>
-
-            {/* Question text */}
             <h2 className="text-xl font-bold text-white leading-relaxed mb-8 whitespace-pre-line">
               {question.text}
             </h2>
 
-            {/* Options */}
             <div className="flex flex-col gap-3 flex-1">
               {question.options.map((opt, i) => (
                 <motion.button
@@ -175,19 +176,11 @@ export default function TestPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.06, duration: 0.3 }}
                   onClick={() => handleSelect(opt.value)}
-                  className={`option-card px-5 py-4 text-left text-sm font-medium ${
-                    selected === opt.value ? "selected" : ""
-                  }`}
+                  className={`option-card px-5 py-4 text-left text-sm font-medium ${selected === opt.value ? "selected" : ""}`}
                 >
                   <span className="text-white/90">{opt.label}</span>
                   {selected === opt.value && (
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="float-right text-hw-orange"
-                    >
-                      ✓
-                    </motion.span>
+                    <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} className="float-right text-hw-orange">✓</motion.span>
                   )}
                 </motion.button>
               ))}
@@ -196,15 +189,12 @@ export default function TestPage() {
         </AnimatePresence>
       </div>
 
-      {/* Next button */}
       <div className="px-5 pb-8 pt-4 safe-bottom">
         <motion.button
           onClick={handleNext}
           disabled={!selected}
           whileTap={{ scale: 0.97 }}
-          className={`btn-primary w-full py-5 rounded-2xl text-lg tracking-widest font-display transition-all ${
-            !selected ? "opacity-30 cursor-not-allowed" : ""
-          }`}
+          className={`btn-primary w-full py-5 rounded-2xl text-lg tracking-widest font-display transition-all ${!selected ? "opacity-30 cursor-not-allowed" : ""}`}
         >
           {currentQ < QUESTIONS.length - 1 ? "NEXT →" : "결과 보기 ⚾"}
         </motion.button>

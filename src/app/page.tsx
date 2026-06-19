@@ -101,7 +101,7 @@ export default function LandingPage() {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="text-white/60 text-sm md:text-base mt-4 mb-10 leading-relaxed"
         >
-          5문항으로 알아보는<br />
+          6문항으로 알아보는<br />
           <span className="text-white/80">나만의 야구장 관람 스타일</span>
         </motion.p>
 
@@ -118,7 +118,7 @@ export default function LandingPage() {
           >
             START TEST
           </button>
-          <p className="text-white/30 text-xs mt-3">약 1분 소요</p>
+          <p className="text-white/30 text-xs mt-3">약 2분 소요</p>
         </motion.div>
 
         {/* Decorative divider */}
