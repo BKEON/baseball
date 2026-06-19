@@ -118,7 +118,7 @@ export default function LandingPage() {
           >
             START TEST
           </button>
-          <p className="text-white/30 text-xs mt-3">약 2분 소요</p>
+          <p className="text-white/30 text-xs mt-3">약 1분 소요</p>
         </motion.div>
 
         {/* Decorative divider */}
