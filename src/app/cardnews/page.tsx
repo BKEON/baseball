@@ -127,7 +127,7 @@ function Card3() {
             transition={{ delay: i * 0.2 + 0.3 }}
             className="flex-1 rounded-2xl p-4 text-center"
             style={{ background: `${item.color}15`, border: `1px solid ${item.color}40` }}>
-            <p className="text-xs text-white/50 mb-2 whitespace-pre-line leading-tight break-keep">{item.label}</p>
+            <p className="text-base font-black text-white mb-2 whitespace-pre-line leading-snug break-keep">{item.label}</p>
             <div className="text-lg font-black mb-1" style={{ color: item.color }}>{fmt(item.perPerson)}</div>
             <div className="text-xs text-white/40">1인당 평균</div>
             <div className="mt-2 pt-2 border-t border-white/10">
@@ -143,7 +143,7 @@ function Card3() {
         {items.map((item, i) => (
           <div key={i}>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-white/60 whitespace-pre-line leading-tight break-keep">{item.label.replace("\n", " ")}</span>
+              <span className="text-sm font-bold text-white/80 whitespace-pre-line leading-tight break-keep">{item.label.replace("\n", " ")}</span>
               <span style={{ color: item.color }} className="font-bold">{fmt(item.total)}</span>
             </div>
             <div className="h-3 bg-white/10 rounded-full overflow-hidden">
@@ -174,7 +174,7 @@ function Card4() {
     { rank: 2, label: "신성동", value: 7150375868, color: "#F5C842" },
     { rank: 3, label: "관평동", value: 6569588067, color: "#4A90D9" },
     { rank: 4, label: "은행선화동", value: 5939942156, color: "#A855F7" },
-    { rank: 5, label: "둔산2동", value: 1034280828, color: "#16a34a" },
+    { rank: 5, label: "둔산2동", value: 10340280828, color: "#16a34a" },
   ];
   const max = data[0].value;
   const fmt = (v: number) => v >= 100000000 ? (v / 100000000).toFixed(0) + "억" : (v / 10000000).toFixed(0) + "천만";
