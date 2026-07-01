@@ -171,13 +171,13 @@ function Card3() {
 function Card4() {
   const data = [
     { rank: 1, label: "중앙동", value: 102228544347, color: "#FF6B00" },
-    { rank: 2, label: "신성동", value: 7150375868, color: "#F5C842" },
-    { rank: 3, label: "관평동", value: 6569588067, color: "#4A90D9" },
-    { rank: 4, label: "은행선화동", value: 5939942156, color: "#A855F7" },
-    { rank: 5, label: "둔산2동", value: 10340280828, color: "#16a34a" },
+    { rank: 2, label: "둔산2동", value: 10340280828, color: "#F5C842" },
+    { rank: 3, label: "신성동", value: 7150375868, color: "#4A90D9" },
+    { rank: 4, label: "관평동", value: 6569588067, color: "#A855F7" },
+    { rank: 5, label: "은행선화동", value: 5939942156, color: "#16a34a" },
   ];
   const max = data[0].value;
-  const fmt = (v: number) => v >= 100000000 ? (v / 100000000).toFixed(0) + "억" : (v / 10000000).toFixed(0) + "천만";
+  const fmt = (v: number) => (v / 100000000).toFixed(0) + "억";
 
   return (
     <div className="flex flex-col h-full p-5">
@@ -218,7 +218,7 @@ function Card4() {
         </div>
         <p className="text-xs text-white/60 break-keep">
           중앙동이 <span className="text-purple-400 font-bold">1,022억원</span>으로<br/>
-          2위 신성동(71억)과 약 14배 차이
+          2위 둔산2동(103억)과 약 10배 차이
         </p>
       </div>
     </div>
