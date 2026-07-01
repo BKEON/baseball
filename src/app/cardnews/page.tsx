@@ -5,39 +5,231 @@ import { motion, AnimatePresence } from "framer-motion";
 import { trackCardNews } from "@/lib/analytics";
 import { KodaLogoCorner } from "@/components/KodaLogo";
 
+// ── 카드 1: 부사동 전체 카드소비 TOP3 ──
+function Card1() {
+  const data = [
+    { rank: 1, label: "한식 일반\n음식점업", value: 326550083, color: "#FF6B00", pct: 100 },
+    { rank: 2, label: "편의점", value: 294256894, color: "#F5C842", pct: 90 },
+    { rank: 3, label: "골프·스포츠\n경기용품", value: 260760877, color: "#4A90D9", pct: 80 },
+  ];
+  const fmt = (v: number) => (v / 100000000).toFixed(1) + "억";
+
+  return (
+    <div className="flex flex-col h-full p-5">
+      <div className="flex items-center gap-2 mb-1">
+        <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-hw-orange/20 text-hw-orange">#01</span>
+        <span className="text-xs text-white/40">실제 SDC 카드소비 데이터</span>
+      </div>
+      <h2 className="text-xl font-bold text-white leading-tight mb-1 break-keep">
+        ⚾ 볼파크 인근<br/>카드 소비 <span className="text-hw-orange">TOP 3</span>
+      </h2>
+      <p className="text-xs text-white/50 mb-5 break-keep">한화생명 볼파크 인근 지역 기준</p>
+
+      <div className="flex flex-col gap-4 flex-1">
+        {data.map((item, i) => (
+          <motion.div key={i} initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.15 + 0.3 }}>
+            <div className="flex items-center gap-3 mb-1.5">
+              <div className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0"
+                style={{ background: item.color, color: "#000" }}>{item.rank}</div>
+              <span className="text-sm font-bold text-white break-keep whitespace-pre-line leading-tight">{item.label}</span>
+              <span className="ml-auto text-sm font-black" style={{ color: item.color }}>{fmt(item.value)}</span>
+            </div>
+            <div className="h-2.5 bg-white/10 rounded-full overflow-hidden ml-10">
+              <motion.div className="h-full rounded-full"
+                initial={{ width: 0 }} animate={{ width: `${item.pct}%` }}
+                transition={{ delay: i * 0.15 + 0.5, duration: 0.7, ease: "easeOut" }}
+                style={{ background: item.color }} />
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* 인포그래픽 강조 */}
+      <div className="mt-5 rounded-2xl p-4 text-center" style={{ background: "rgba(255,107,0,0.1)", border: "1px solid rgba(255,107,0,0.25)" }}>
+        <div className="text-2xl font-black text-hw-orange">🍚 한식 1위!</div>
+        <p className="text-xs text-white/60 mt-1 break-keep">볼파크 인근 핵심 소비는<br/>한식당 · 편의점 · 스포츠용품점</p>
+      </div>
+    </div>
+  );
+}
+
+// ── 카드 2: 외부유입 고객 카드소비 TOP3 ──
+function Card2() {
+  const data = [
+    { rank: 1, label: "골프·스포츠\n경기용품", value: 169195438, color: "#FF6B00", pct: 100 },
+    { rank: 2, label: "한식 일반\n음식점업", value: 136233963, color: "#F5C842", pct: 81 },
+    { rank: 3, label: "편의점", value: 122858668, color: "#4A90D9", pct: 73 },
+  ];
+  const fmt = (v: number) => (v / 100000000).toFixed(1) + "억";
+
+  return (
+    <div className="flex flex-col h-full p-5">
+      <div className="flex items-center gap-2 mb-1">
+        <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400">#02</span>
+        <span className="text-xs text-white/40">대전 외지 방문객 분석</span>
+      </div>
+      <h2 className="text-xl font-bold text-white leading-tight mb-1 break-keep">
+        🚗 외지인이 쓰는 돈<br/><span className="text-blue-400">TOP 3</span>
+      </h2>
+      <p className="text-xs text-white/50 mb-5 break-keep">대전 비거주 외지 방문객 기준</p>
+
+      <div className="flex flex-col gap-4 flex-1">
+        {data.map((item, i) => (
+          <motion.div key={i} initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.15 + 0.3 }}>
+            <div className="flex items-center gap-3 mb-1.5">
+              <div className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0"
+                style={{ background: item.color, color: "#000" }}>{item.rank}</div>
+              <span className="text-sm font-bold text-white break-keep whitespace-pre-line leading-tight">{item.label}</span>
+              <span className="ml-auto text-sm font-black" style={{ color: item.color }}>{fmt(item.value)}</span>
+            </div>
+            <div className="h-2.5 bg-white/10 rounded-full overflow-hidden ml-10">
+              <motion.div className="h-full rounded-full"
+                initial={{ width: 0 }} animate={{ width: `${item.pct}%` }}
+                transition={{ delay: i * 0.15 + 0.5, duration: 0.7, ease: "easeOut" }}
+                style={{ background: item.color }} />
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="mt-5 rounded-2xl p-4 text-center" style={{ background: "rgba(74,144,217,0.1)", border: "1px solid rgba(74,144,217,0.25)" }}>
+        <div className="text-2xl font-black text-blue-400">⛳ 스포츠용품 1위!</div>
+        <p className="text-xs text-white/60 mt-1 break-keep">외지인은 스포츠용품 구매에<br/>가장 많이 지출하는 특징</p>
+      </div>
+    </div>
+  );
+}
+
+// ── 카드 3: 1인당 소비 비교 ──
+function Card3() {
+  const items = [
+    { label: "야구장 외부유입\n고객 평균", total: 76716, perPerson: 32306, color: "#FF6B00" },
+    { label: "대전 전체\n평균", total: 114869, perPerson: 35687, color: "#4A90D9" },
+  ];
+  const fmt = (v: number) => v.toLocaleString() + "원";
+  const maxTotal = Math.max(...items.map(i => i.total));
+
+  return (
+    <div className="flex flex-col h-full p-5">
+      <div className="flex items-center gap-2 mb-1">
+        <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-green-500/20 text-green-400">#03</span>
+        <span className="text-xs text-white/40">소비 규모 비교</span>
+      </div>
+      <h2 className="text-xl font-bold text-white leading-tight mb-1 break-keep">
+        💳 1인당 카드소비<br/><span className="text-green-400">비교 분석</span>
+      </h2>
+      <p className="text-xs text-white/50 mb-5 break-keep">대전 외지 방문객 vs 대전 전체 평균</p>
+
+      {/* 비교 카드 */}
+      <div className="flex gap-3 mb-5">
+        {items.map((item, i) => (
+          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.2 + 0.3 }}
+            className="flex-1 rounded-2xl p-4 text-center"
+            style={{ background: `${item.color}15`, border: `1px solid ${item.color}40` }}>
+            <p className="text-xs text-white/50 mb-2 whitespace-pre-line leading-tight break-keep">{item.label}</p>
+            <div className="text-lg font-black mb-1" style={{ color: item.color }}>{fmt(item.perPerson)}</div>
+            <div className="text-xs text-white/40">1인당 평균</div>
+            <div className="mt-2 pt-2 border-t border-white/10">
+              <div className="text-xs text-white/60">{fmt(item.total)}</div>
+              <div className="text-xs text-white/30">평균 소비액</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* 바 비교 */}
+      <div className="flex flex-col gap-3 flex-1">
+        {items.map((item, i) => (
+          <div key={i}>
+            <div className="flex justify-between text-xs mb-1">
+              <span className="text-white/60 whitespace-pre-line leading-tight break-keep">{item.label.replace("\n", " ")}</span>
+              <span style={{ color: item.color }} className="font-bold">{fmt(item.total)}</span>
+            </div>
+            <div className="h-3 bg-white/10 rounded-full overflow-hidden">
+              <motion.div className="h-full rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: `${(item.total / maxTotal) * 100}%` }}
+                transition={{ delay: i * 0.2 + 0.5, duration: 0.8 }}
+                style={{ background: item.color }} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-4 rounded-2xl p-3 text-center" style={{ background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.25)" }}>
+        <p className="text-xs text-white/70 break-keep">
+          대전 외지 방문객 1인당 소비 <span className="text-green-400 font-bold">32,306원</span><br/>
+          대전 전체 평균 대비 <span className="text-green-400 font-bold">약 90% 수준</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ── 카드 4: 대전 외부유입 소비 TOP5 지역 ──
+function Card4() {
+  const data = [
+    { rank: 1, label: "중앙동", value: 102228544347, color: "#FF6B00" },
+    { rank: 2, label: "신성동", value: 7150375868, color: "#F5C842" },
+    { rank: 3, label: "관평동", value: 6569588067, color: "#4A90D9" },
+    { rank: 4, label: "은행선화동", value: 5939942156, color: "#A855F7" },
+    { rank: 5, label: "둔산2동", value: 1034280828, color: "#16a34a" },
+  ];
+  const max = data[0].value;
+  const fmt = (v: number) => v >= 100000000 ? (v / 100000000).toFixed(0) + "억" : (v / 10000000).toFixed(0) + "천만";
+
+  return (
+    <div className="flex flex-col h-full p-5">
+      <div className="flex items-center gap-2 mb-1">
+        <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-400">#04</span>
+        <span className="text-xs text-white/40">지역별 소비 현황</span>
+      </div>
+      <h2 className="text-xl font-bold text-white leading-tight mb-1 break-keep">
+        📍 대전 외부유입<br/>소비 <span className="text-purple-400">TOP 5 지역</span>
+      </h2>
+      <p className="text-xs text-white/50 mb-4 break-keep">대전을 찾은 외지인의 주요 소비 지역</p>
+
+      <div className="flex flex-col gap-3 flex-1">
+        {data.map((item, i) => (
+          <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.12 + 0.3 }}>
+            <div className="flex items-center gap-2 mb-1">
+              <div className="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-black flex-shrink-0"
+                style={{ background: item.color, color: "#000" }}>{item.rank}</div>
+              <span className="text-sm font-bold text-white">{item.label}</span>
+              <span className="ml-auto text-xs font-black" style={{ color: item.color }}>{fmt(item.value)}</span>
+            </div>
+            <div className="h-2 bg-white/10 rounded-full overflow-hidden ml-8">
+              <motion.div className="h-full rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: `${Math.max((item.value / max) * 100, 2)}%` }}
+                transition={{ delay: i * 0.12 + 0.5, duration: 0.7 }}
+                style={{ background: item.color }} />
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="mt-4 rounded-2xl p-3" style={{ background: "rgba(168,85,247,0.1)", border: "1px solid rgba(168,85,247,0.25)" }}>
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-purple-400 text-base">🏆</span>
+          <span className="text-xs font-bold text-white">중앙동 압도적 1위</span>
+        </div>
+        <p className="text-xs text-white/60 break-keep">
+          중앙동이 <span className="text-purple-400 font-bold">1,022억원</span>으로<br/>
+          2위 신성동(71억)과 약 14배 차이
+        </p>
+      </div>
+    </div>
+  );
+}
+
 const CARDS = [
-  { page: 1, title: "한화생명 볼파크\n방문객은 누구일까?", emoji: "👥", color: "#FF6B00",
-    stats: [
-      { label: "20-30대", value: "64%", desc: "주 방문 연령층" },
-      { label: "동반 관람", value: "78%", desc: "혼자 오지 않는 비율" },
-      { label: "여성 관람객", value: "42%", desc: "전년 대비 +8%p" },
-    ],
-    insight: "젊은 세대와 커플·가족 단위의 방문이 크게 늘고 있습니다. 야구는 이제 스포츠를 넘어 문화 콘텐츠로 자리잡고 있어요.",
-  },
-  { page: 2, title: "언제 가장\n사람이 많을까?", emoji: "📅", color: "#F5C842",
-    stats: [
-      { label: "금·토·일", value: "TOP 3", desc: "주말 집중 현상" },
-      { label: "저녁 경기", value: "18:00~", desc: "가장 인기 있는 시간대" },
-      { label: "성수기", value: "6-8월", desc: "방문객 최대 집중" },
-    ],
-    insight: "토요일 저녁 경기가 가장 높은 인기를 자랑합니다. 평일 낮 경기는 비교적 여유롭게 즐길 수 있어요.",
-  },
-  { page: 3, title: "야구장 주변에서\n어디에 돈을 쓸까?", emoji: "💰", color: "#16a34a",
-    stats: [
-      { label: "식음료", value: "1위", desc: "경기장 내·외부 통합" },
-      { label: "이동·주차", value: "2위", desc: "교통 관련 지출" },
-      { label: "MD 상품", value: "3위", desc: "굿즈 구매 급증" },
-    ],
-    insight: "방문객 1인당 평균 지출액이 지속 증가하고 있으며, 특히 MD 상품 구매가 전년 대비 35% 증가했습니다.",
-  },
-  { page: 4, title: "한화생명 볼파크가\n지역경제에 미치는 영향", emoji: "🏙️", color: "#4A90D9",
-    stats: [
-      { label: "연간 방문객", value: "100만+", desc: "대전 대표 관광명소" },
-      { label: "지역 매출", value: "↑32%", desc: "인근 상권 활성화" },
-      { label: "고용 창출", value: "2,000+", desc: "직간접 일자리" },
-    ],
-    insight: "한화생명 볼파크는 단순한 야구장을 넘어 대전 지역경제를 이끄는 핵심 인프라로 성장하고 있습니다.",
-  },
+  { page: 1, color: "#FF6B00", component: Card1 },
+  { page: 2, color: "#4A90D9", component: Card2 },
+  { page: 3, color: "#16a34a", component: Card3 },
+  { page: 4, color: "#A855F7", component: Card4 },
 ];
 
 export default function CardNewsPage() {
@@ -64,25 +256,33 @@ export default function CardNewsPage() {
   };
 
   const card = CARDS[current];
+  const CardComponent = card.component;
 
   return (
     <main className="min-h-screen bg-hw-dark flex flex-col">
       <KodaLogoCorner />
+
       <div className="flex items-center justify-between px-5 pt-5 pb-3">
         <button onClick={() => router.back()} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white transition-all">←</button>
-        <div className="text-xs font-mono text-white/30 uppercase tracking-widest">Card News</div>
+        <div className="text-center">
+          <div className="text-xs font-mono text-white/30 uppercase tracking-widest">Card News</div>
+          <div className="text-xs text-white/20 mt-0.5">국가데이터처 SDC 카드소비 데이터</div>
+        </div>
         <div className="text-xs font-mono text-white/40">{current + 1} / {CARDS.length}</div>
       </div>
 
-      <div className="flex justify-center gap-2 pb-4">
-        {CARDS.map((_, i) => (
+      {/* 점 인디케이터 */}
+      <div className="flex justify-center gap-2 pb-3">
+        {CARDS.map((c, i) => (
           <button key={i} onClick={() => goToPage(i)}>
-            <div className={`h-1 rounded-full transition-all duration-300 ${i === current ? "w-8 bg-hw-orange" : "w-2 bg-white/20"}`} />
+            <div className="h-1 rounded-full transition-all duration-300"
+              style={{ width: i === current ? 32 : 8, background: i === current ? c.color : "rgba(255,255,255,0.2)" }} />
           </button>
         ))}
       </div>
 
-      <div className="flex-1 px-5 pb-5 overflow-hidden"
+      {/* 카드 */}
+      <div className="flex-1 px-5 pb-4 overflow-hidden"
         onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
           if (touchStartX.current === null) return;
@@ -91,39 +291,21 @@ export default function CardNewsPage() {
           if (diff < -50 && current > 0) goToPage(current - 1);
           touchStartX.current = null;
         }}>
-        <AnimatePresence mode="wait" custom={direction}>
+        <AnimatePresence mode="wait">
           <motion.div key={current}
             initial={{ opacity: 0, x: direction * 80 }} animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -direction * 80 }} transition={{ duration: 0.35 }}
+            exit={{ opacity: 0, x: -direction * 80 }} transition={{ duration: 0.3 }}
             className="h-full">
-            <div className="rounded-3xl overflow-hidden flex flex-col min-h-[480px]"
-              style={{ background: `linear-gradient(135deg, ${card.color}20, #0A0E1A 60%)`, border: `1px solid ${card.color}30` }}>
+            <div className="rounded-3xl overflow-hidden min-h-[480px] flex flex-col"
+              style={{ background: `linear-gradient(145deg, ${card.color}18 0%, #0A0E1A 55%)`, border: `1px solid ${card.color}35` }}>
               <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, ${card.color}, transparent)` }} />
-              <div className="flex-1 p-6 flex flex-col">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono px-3 py-1 rounded-full" style={{ background: `${card.color}20`, color: card.color }}>#{String(card.page).padStart(2, "0")}</span>
-                  <span className="text-3xl">{card.emoji}</span>
-                </div>
-                <h2 className="text-2xl font-bold text-white leading-tight mb-6 whitespace-pre-line break-keep">{card.title}</h2>
-                <div className="grid grid-cols-3 gap-3 mb-6">
-                  {card.stats.map((stat, i) => (
-                    <div key={i} className="rounded-2xl p-3 text-center" style={{ background: `${card.color}15`, border: `1px solid ${card.color}20` }}>
-                      <div className="text-xl font-black leading-none mb-1" style={{ color: card.color }}>{stat.value}</div>
-                      <div className="text-white font-bold text-xs mb-1">{stat.label}</div>
-                      <div className="text-white/40 text-[10px] leading-tight">{stat.desc}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="rounded-2xl p-4 flex-1" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
-                  <div className="text-xs text-white/40 mb-2 uppercase tracking-wider">Insight</div>
-                  <p className="text-white/80 text-sm leading-relaxed break-keep">{card.insight}</p>
-                </div>
-              </div>
+              <CardComponent />
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
+      {/* 하단 버튼 */}
       <div className="px-5 pb-6 safe-bottom flex gap-3">
         {current < CARDS.length - 1 ? (
           <button onClick={() => goToPage(current + 1)} className="btn-primary flex-1 py-4 rounded-2xl font-bold tracking-widest">다음 카드 →</button>
